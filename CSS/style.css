@@ -1,0 +1,412 @@
+/* =========================================================
+   अजय क्लासेस – style.css
+   ========================================================= */
+
+/* ---------- 1. Variables (रंग) ---------- */
+:root {
+  --red: #a30f22;
+  --btn: #a30f22;          /* बटणाचा रंग (डार्क मोडमध्येही गडद राहतो) */
+  --gold: #f6c40f;
+  --navy: #0f2a5c;
+  --heading: #0f2a5c;      /* शीर्षकांचा रंग */
+  --bg: #fffaf0;
+  --card: #ffffff;
+  --ink: #1d2433;
+  --mute: #566075;
+  --line: #eadfc6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --red: #ff6b7d;
+    --heading: #f6c40f;
+    --navy: #0a1a3a;
+    --bg: #10162a;
+    --card: #182040;
+    --ink: #f2efe6;
+    --mute: #aab3c9;
+    --line: #2a3560;
+  }
+}
+
+/* ---------- 2. Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding-top: env(safe-area-inset-top, 0);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 18px/1.7 "Mukta", system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Yatra One", "Mukta", serif;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.w {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 56px 0;
+}
+
+section > .w > h2 {
+  font-size: clamp(30px, 5vw, 42px);
+  color: var(--heading);
+}
+
+.lead {
+  max-width: 60ch;
+  margin: 8px 0 28px;
+  color: var(--mute);
+}
+
+/* ---------- 3. Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 11px 22px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--btn);
+  color: #fff;
+  font: 800 17px "Mukta", sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn.alt {
+  background: var(--gold);
+  color: #3b0a10;
+}
+
+a:focus-visible,
+.btn:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ---------- 4. Header / Navigation ---------- */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.brand b {
+  font: 400 24px "Yatra One", serif;
+  color: var(--red);
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 3px solid var(--red);
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--red);
+  font: italic 800 18px Georgia, serif;
+}
+
+nav ul {
+  display: flex;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-weight: 600;
+}
+
+nav ul a {
+  color: var(--mute);
+  text-decoration: none;
+}
+
+nav ul a:hover {
+  color: var(--red);
+}
+
+/* ---------- 5. Hero ---------- */
+.hero {
+  padding: 48px 0 56px;
+  background: linear-gradient(180deg, transparent, rgba(246, 196, 15, .14));
+}
+
+.hero .w {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(46px, 9vw, 92px);
+  color: var(--red);
+  text-shadow: 3px 3px 0 var(--gold);
+}
+
+.hero .sub {
+  margin: 10px 0 6px;
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.hero .btn {
+  margin: 0 8px 8px 0;
+}
+
+.tag {
+  margin: 0 0 22px;
+  color: var(--mute);
+}
+
+.tag span {
+  padding: 0 6px;
+  color: var(--red);
+}
+
+/* फळा (Blackboard) */
+.board {
+  padding: 26px 24px;
+  border: 10px solid #b98a52;
+  border-radius: 6px;
+  background: #1f4a3a;
+  color: #f4f1dc;
+  text-align: center;
+  transform: rotate(1.2deg);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .25);
+}
+
+.board small {
+  display: block;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.board h2 {
+  margin: 4px 0 10px;
+  font-size: 28px;
+}
+
+.board p {
+  margin: 0;
+  font-size: 19px;
+}
+
+/* ---------- 6. वैशिष्ट्ये (Features) ---------- */
+.feat {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.feat div {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--red);
+  border-radius: 10px;
+  background: var(--card);
+}
+
+.feat div:nth-child(2) { border-top-color: #2f9e5b; }
+.feat div:nth-child(3) { border-top-color: #e07b39; }
+.feat div:nth-child(4) { border-top-color: #2a6fd1; }
+.feat div:nth-child(5) { border-top-color: #8b4fc4; }
+
+.feat h3 {
+  margin-bottom: 6px;
+  font-size: 21px;
+}
+
+.feat p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--mute);
+}
+
+/* ---------- 7. शिक्षण आणि संस्कार (Navy band) ---------- */
+.band {
+  background: var(--navy);
+  color: #fff;
+}
+
+.band .w > h2 {
+  color: var(--gold);
+}
+
+.fest {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.fest div {
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 12px;
+}
+
+.fest h3 {
+  margin-bottom: 8px;
+  font-size: 26px;
+  color: var(--gold);
+}
+
+.fest p {
+  margin: 0;
+  color: #e6ebf7;
+}
+
+/* ---------- 8. About ---------- */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.trust-title {
+  font-size: clamp(30px, 5vw, 42px);
+  color: var(--heading);
+}
+
+.quote {
+  max-width: 26ch;
+  font: 400 clamp(22px, 3.4vw, 30px)/1.5 "Yatra One", serif;
+  color: var(--red);
+}
+
+.about ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-weight: 600;
+}
+
+/* ---------- 9. Contact ---------- */
+.contact-section {
+  background: linear-gradient(0deg, transparent, rgba(246, 196, 15, .14));
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.phone {
+  display: block;
+  font: 800 clamp(26px, 4.5vw, 38px)/1.2 "Mukta", sans-serif;
+  color: var(--red);
+  text-decoration: none;
+}
+
+/* Form */
+form {
+  display: grid;
+  gap: 12px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+}
+
+label {
+  display: grid;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+}
+
+/* ---------- 10. Footer ---------- */
+footer {
+  padding: 26px 20px;
+  background: var(--navy);
+  color: #cdd6ee;
+  text-align: center;
+  font-size: 16px;
+}
+
+footer b {
+  color: var(--gold);
+}
+
+/* ---------- 11. Responsive (मोबाईल) ---------- */
+@media (max-width: 760px) {
+  .hero .w,
+  .about,
+  .contact {
+    grid-template-columns: 1fr;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  .board {
+    transform: none;
+  }
+}
+
+/* ---------- 12. Accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
